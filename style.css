@@ -1,0 +1,50 @@
+#quick-lay {
+	overflow: hidden;
+	position: absolute;
+	text-align: center;
+}
+
+#overlayClose {
+	position: absolute; 
+	top: 5px; 
+	right: 5px; 
+}
+
+	#overlayClose a {
+		display: inline-block;
+		padding: 5px; 
+	}
+
+.dark {
+	background: #47423B;
+	border: 1px solid #efefef;
+	color: #fff;
+	/* CSS Styles */
+    -webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;			 
+}
+	.dark a { 
+		color: #fff; 
+		text-decoration: none; 
+	}
+
+.light {
+	background: #efefef;
+	border: 1px solid #ddd;
+	color: #47423B; 
+	/* CSS Styles */
+    -webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;			 
+}
+	.light a { 
+		color: #47423B; 
+		text-decoration: none; 
+	}
