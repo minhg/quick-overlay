@@ -5,7 +5,7 @@
 // - width
 // - message (Failover with return false and console message)
 // - position (top, left, right, bottom, center)
-// - effect (dark, light)
+// - class (optional class)
 
 (function($) {
 
@@ -87,7 +87,7 @@
                 // Creating the Overlay Div
                 var overlay = $('<div/>', {
                     'id': 'quick-lay',
-                    'class': $this.settings.effect,
+                    'class': $this.settings.class,
                     css: ({
                         'height': $this.settings.height + 'px',
                         'width': $this.settings.width + 'px'
@@ -99,11 +99,11 @@
 
                 // Appending message to Overlay Div
                 var overLMsg = $('<p>' + $this.settings.message + '</p>'),
-                    overLClose = $('<span id="overlayClose"><a href="#">X</a></span>');
+                    overLClose = $('<div id="overlay-close"></div>');
 
                 overlay.append(overLMsg, overLClose).fadeIn(500);
 
-                overLClose.find('a').on('click', function() {
+                overLClose.on('click', function() {
                     close(callback);
                     return false;
                 });
@@ -124,7 +124,7 @@
 
     $.fn.overlayBox.settings = {
         // Default settings for overlayBox
-        effect: 'dark',
+        class: '',
         height: 500,
         width: 500,
         message: 'hello',

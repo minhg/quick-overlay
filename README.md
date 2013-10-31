@@ -1,4 +1,2 @@
-jquery-overlay
-==============
+# Quick overlay
 
-Quick customisable Overlay

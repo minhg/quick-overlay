@@ -1,50 +1,45 @@
 #quick-lay {
-	overflow: hidden;
-	position: absolute;
-	text-align: center;
+    padding: 10px; 
+    position: absolute;
+    text-align: center;
+    
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
-#overlayClose {
-	position: absolute; 
-	top: 5px; 
-	right: 5px; 
+#overlay-close {
+    background: #2C2C2C;
+    cursor: pointer;
+    height: 0.7em;
+    font-size: 22px;
+    position: absolute;
+    top: 10px;
+    right: -15px; 
+    text-indent: -10000px;
+    width: 0.1em;
+    
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 
-	#overlayClose a {
-		display: inline-block;
-		padding: 5px; 
-	}
-
-.dark {
-	background: #47423B;
-	border: 1px solid #efefef;
-	color: #fff;
-	/* CSS Styles */
-    -webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.5);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;			 
+#overlay-close:after {
+    background: #2C2C2C;
+    content: "";
+    height: 0.7em;
+    position: absolute;
+    width: 0.1em;
+    
+    -webkit-transform: rotate(-90deg);
+       -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+         -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
 }
-	.dark a { 
-		color: #fff; 
-		text-decoration: none; 
-	}
-
-.light {
-	background: #efefef;
-	border: 1px solid #ddd;
-	color: #47423B; 
-	/* CSS Styles */
-    -webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8) inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;			 
-}
-	.light a { 
-		color: #47423B; 
-		text-decoration: none; 
-	}
