@@ -11,15 +11,16 @@
 
     $.fn.overlayBox = function(settings, callback) {
 
+
         return this.each(function(e) {
 
             var $this = this;
-            $this.settings = $.extend({}, $.fn.overlayBox.settings, settings);
+            settings = $.extend({}, $.fn.overlayBox.settings, settings);
 
-            function close(callback) {
+            function close(overlay, callback) {
 
                 // Closing overlay with slight animation
-                $('#quick-lay').fadeOut(500, function() {
+                overlay.fadeOut(500, function() {
                     $(this).remove();
                 });
 
@@ -29,51 +30,63 @@
                 }
             }
 
-            function buildPosition(settings) {
+            function buildSize(overlay, settings) {
+                if (settings.height > 0) {
+                    overlay.css('height', settings.height);
+                }
+
+                if (settings.width > 0) {
+                    overlay.css('width', settings.width);
+                }
+            }
+
+            function buildPosition(overlay, settings) {
 
                 // Custom position calculations
                 var winHeight = $(window).height(),
                     winWidth = $(window).width(),
-                    oPos = '';
+                    oPos = '',
+                    overlayHeight = overlay.height,
+                    overlayWidth;
 
                 // Cycling through the positions
-                switch ($this.settings.position) {
+                switch (settings.position) {
                 case 'center':
                     oPos = {
-                        'top': Math.round((winHeight - $this.settings.height) / 2),
-                        'left': Math.round((winWidth - $this.settings.width) / 2) + 'px'
+                        'top': Math.round((winHeight - settings.height) / 2),
+                        'left': Math.round((winWidth - settings.width) / 2) + 'px'
                     };
                     break;
                 case 'left':
                     oPos = {
-                        'top': Math.round((winHeight - $this.settings.height) / 2) + 'px',
+                        'top': Math.round((winHeight - settings.height) / 2) + 'px',
                         'left': 0
                     };
                     break;
                 case 'right':
                     oPos = {
-                        'top': Math.round((winHeight - $this.settings.height) / 2) + 'px',
+                        'top': Math.round((winHeight - settings.height) / 2) + 'px',
                         'right': 0
                     };
                     break;
                 case 'top':
                     oPos = {
                         'top': 0,
-                        'left': Math.round((winWidth - $this.settings.width) / 2) + 'px'
+                        'left': Math.round((winWidth - settings.width) / 2) + 'px'
                     };
                     break;
                 case 'bottom':
                     oPos = {
                         'bottom': 0,
-                        'left': Math.round((winWidth - $this.settings.width) / 2) + 'px'
+                        'left': Math.round((winWidth - settings.width) / 2) + 'px'
                     };
                     break;
                 }
-                $('#quick-lay').css(oPos);
+                overlay.css(oPos);
 
                 // Override for special case where overlay is taller than window
-                if ($this.settings.height > winHeight) {
-                    $('#quick-lay').css({
+                if (settings.height > winHeight) {
+                    overlay.css({
                         'top': 0
                     });
                 }
@@ -81,37 +94,31 @@
 
             function init(settings, callback) {
 
-                // Remove any existing Overlays
-                $('#quick-lay').remove();
-
                 // Creating the Overlay Div
                 var overlay = $('<div/>', {
-                    'id': 'quick-lay',
-                    'class': $this.settings.class,
-                    css: ({
-                        'height': $this.settings.height + 'px',
-                        'width': $this.settings.width + 'px'
-                    })
+                    'class': 'quick-lay'
                 }).hide().appendTo('body');
 
                 // Building custom position
-                buildPosition(settings);
+                buildPosition(overlay, settings);
+                buildSize(overlay, settings);
 
                 // Appending message to Overlay Div
-                var overLMsg = $('<p>' + $this.settings.message + '</p>'),
-                    overLClose = $('<div id="overlay-close"></div>');
+                var overLMsg = $('<p>' + settings.message + '</p>'),
+                    overLClose = $('<div class="quick-lay-close"></div>');
 
                 overlay.append(overLMsg, overLClose).fadeIn(500);
 
                 overLClose.on('click', function() {
-                    close(callback);
+                    close(overlay, callback);
                     return false;
                 });
+
             }
 
             // Error handling for Message
             return $(this).on('click', function() {
-                if ($this.settings.message === '' || $this.settings.message === null) {
+                if (settings.message === '' || settings.message === null) {
                     console.log('Overlay Disabled: Please enter a message');
                 } else {
                     init(settings, callback);
@@ -123,8 +130,6 @@
     };
 
     $.fn.overlayBox.settings = {
-        // Default settings for overlayBox
-        class: '',
         height: 500,
         width: 500,
         message: 'hello',

@@ -1,4 +1,6 @@
-#quick-lay {
+.quick-lay {
+    background: #fff;
+    display: inline-block;
     padding: 10px; 
     position: absolute;
     text-align: center;
@@ -12,7 +14,11 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
-#overlay-close {
+.quick-lay p {
+    margin: 0 0 1em; 
+}
+
+.quick-lay-close {
     background: #2C2C2C;
     cursor: pointer;
     height: 0.7em;
@@ -30,7 +36,7 @@
             transform: rotate(45deg);
 }
 
-#overlay-close:after {
+.quick-lay-close:after {
     background: #2C2C2C;
     content: "";
     height: 0.7em;
